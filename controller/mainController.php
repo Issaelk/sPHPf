@@ -5,13 +5,11 @@ namespace controller;
 class mainController extends \Application {
 
     function index() {
-        // This is how you set up vars to use inside your view.
-        $this->data['example_var'] = \ExampleVendor\ExampleVendor::EXAMPLE_CONST;
-        return new \coldstarstudios\framework\Response('web/index.twig', $this->data);
+        return new \coldstarstudios\framework\Response('web/index.php', $this->data);
     }
 
     function other() {
-        return new \coldstarstudios\framework\Response('web/other.twig', $this->data);
+        return new \coldstarstudios\framework\Response('web/other.php', $this->data);
     }
 }
 ?>

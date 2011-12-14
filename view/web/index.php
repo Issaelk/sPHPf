@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>{% block title %}sPHPf Application{% endblock %}</title>
+        <title>sPHPf Application</title>
         <link rel="shorcut icon" href="{{path}}resources/favicon.ico" />
         <style>
                 div{
@@ -16,7 +16,12 @@
     <body>
         <div id="viewport">
             <div id="content">
-                {% block body %}{% endblock %}
+                <b>This is a Simple PHP Framework Application</b><br/>
+                <br/><br/>
+                Mini-menu:
+                <br/><br/>
+                <a href="<?php print_r($vars);?>main/index">Main page</a><br/>
+                <a href="{{path}}main/other">Other page</a>
             </div>
             <div id="back_2">
                 <b>Powered</b> by 
