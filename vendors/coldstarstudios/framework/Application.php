@@ -52,6 +52,7 @@ class Application implements interfaces\Application{
         $data = \Spyc\Spyc::YAMLLoad($app_config_file);
         $app_config = $data['app_config'];
         
+        // This is set in the config file
         $this->production = $app_config['production'];
         $this->path = $app_config['default_uri'];
     }

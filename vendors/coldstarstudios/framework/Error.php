@@ -9,8 +9,10 @@ namespace coldstarstudios\framework;
  * @license MIT
  */
 class Error {
-    
-    // This holds the exception data.
+    /**
+     * This holds the exception data.
+     * @var \Exception
+     */
     public $exception;
     
     /**
@@ -21,6 +23,7 @@ class Error {
     function __construct($Application, $exception){
         $this->exception = $exception;
         $this->Application = $Application;
+        //echo '<pre>'.print_r($Application, true).'</pre>';
     }
         
     function response(){
@@ -28,17 +31,19 @@ class Error {
         $this->Application->data['error']['code'] = $this->exception->getCode();
         $this->Application->data['error']['message'] = $this->exception->getMessage();
         $this->Application->data['error']['file'] = $this->exception->getFile();
+        $this->Application->data['error']['line'] = $this->exception->getLine();
         
         try{
-            $view = new \coldstarstudios\framework\Response('errors/application.twig', $this->Application->data);
-            $production_view = new \coldstarstudios\framework\Response('errors/production.twig', $this->Application->data);
+            $view = new \coldstarstudios\framework\Response('errors/application.php', $this->Application->data);
+            $production_view = new \coldstarstudios\framework\Response('errors/production.php', $this->Application->data);
+            // The production is set in the APP config file
             if($this->Application->production)
                 $production_view->renderView();
             else
                 $view->renderView();
             
         } catch (\Exception $z) {
-            echo "Error message: #".$z->getCode()." ---- ".$z->getMessage()." ".$z->getFile();
+            echo "Error message: #".$z->getCode()." ---- ".$z->getMessage()." ".$z->getFile()." ".$z->getLine();
         }
     }
 }

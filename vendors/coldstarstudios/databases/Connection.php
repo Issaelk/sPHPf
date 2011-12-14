@@ -45,7 +45,7 @@ class Connection {
             // (This could be easily changed by adding your own library)
             if(isset($this->conn['username']) && isset($this->conn['password']))
             {
-                R::setup($dsn, $this->conn['username'], $this->conn['password']);
+                return new PDO($dsn, $this->conn['username'], $this->conn['password']);
             
                 if($this->conn['database'] == null)
                     throw new \PDOException ('SQLSTATE[??????] [????] You have to specify a database');
