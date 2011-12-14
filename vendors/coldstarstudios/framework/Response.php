@@ -24,7 +24,7 @@ class Response implements \coldstarstudios\framework\interfaces\Response{
     function renderView() {
         // This will show all the view using the model and the controller
         //echo $this->view;
-        print_r($this->vars);
+        $this->vars['path'] = new Path();
         $vars = $this->vars;
         include('view/'.$this->view);
     }
