@@ -28,6 +28,7 @@ class Application implements interfaces\Application{
     /** @var Aplication path */
     public $path;
     
+    public $folders = array();
     public $data = array();
 
     /**
@@ -55,6 +56,8 @@ class Application implements interfaces\Application{
         // This is set in the config file
         $this->production = $app_config['production'];
         $this->path = $app_config['default_uri'];
+        $this->folders['error'] = $app_config['error'];
+        $this->folders['error_production'] = $app_config['error_production'];
     }
     
     /**

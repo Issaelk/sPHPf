@@ -1,5 +1,5 @@
 <?php include('view/templates/header.php');?>
-<b>This is a Simple PHP Framework Application</b><br/>
+<b>This is a Simple PHP Framework - Minimalist version Application</b><br/>
 <br/><br/>
 Mini-menu:
 <br/><br/>

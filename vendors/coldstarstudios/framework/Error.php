@@ -34,13 +34,13 @@ class Error {
         $this->Application->data['error']['line'] = $this->exception->getLine();
         
         try{
-            $view = new \coldstarstudios\framework\Response('errors/application.php', $this->Application->data);
-            $production_view = new \coldstarstudios\framework\Response('errors/production.php', $this->Application->data);
-            // The production is set in the APP config file
+            $no_production_view = new Response($this->Application->folders['error'], $this->Application->data);
+            $production_view = new Response($this->Application->folders['error_production'], $this->Application->data);
+            
             if($this->Application->production)
                 $production_view->renderView();
             else
-                $view->renderView();
+                $no_production_view->renderView();
             
         } catch (\Exception $z) {
             echo "Error message: #".$z->getCode()." ---- ".$z->getMessage()." ".$z->getFile()." ".$z->getLine();
